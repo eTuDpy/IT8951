@@ -134,6 +134,8 @@ void IT8951Display1bppExample2(void);
 void IT8951DisplayExample3(void);
 void IT8951_GUI_Example(void);
 void IT8951_BMP_Example(uint32_t x, uint32_t y,char *path);
+void IT8951_DIRECT(uint32_t x, uint32_t y, uint16_t usDpyMode, char *path);
+void IT8951_CLEAR(void);
 
 uint16_t IT8951ReadReg(uint16_t usRegAddr);
 void IT8951SetImgBufBaseAddr(uint32_t ulImgBufAddr);
