@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/Users/rubendelrio/Fun/linux/linux-4.4.80/include/**",
+                "/Users/rubendelrio/Fun/waveshare/includes/bcm2835-1.58/src/**",
+                "${workspaceFolder}/**",
+                "/usr/local/Cellar/gcc/8.2.0/include/c++/8.2.0",
+                "/usr/include/c++/4.2.1"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}

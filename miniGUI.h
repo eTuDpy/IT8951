@@ -17,30 +17,30 @@ typedef struct
   uint16_t Y;
 }Point, *pPoint; 
 
-//14byteÎÄ¼þÍ·
+//14byteï¿½Ä¼ï¿½Í·
 typedef struct
 {
-	uint16_t cfType;//ÎÄ¼þÀàÐÍ£¬"BM"(0x4D42)
-	uint32_t cfSize;//ÎÄ¼þ´óÐ¡£¨×Ö½Ú£©
-	uint32_t cfReserved;//±£Áô£¬ÖµÎª0
-	uint32_t cfoffBits;//Êý¾ÝÇøÏà¶ÔÓÚÎÄ¼þÍ·µÄÆ«ÒÆÁ¿£¨×Ö½Ú£©
+	uint16_t cfType;//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í£ï¿½"BM"(0x4D42)
+	uint32_t cfSize;//ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Ö½Ú£ï¿½
+	uint32_t cfReserved;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎª0
+	uint32_t cfoffBits;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Í·ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½Ú£ï¿½
 }__attribute__((packed)) BITMAPFILEHEADER;
-//__attribute__((packed))µÄ×÷ÓÃÊÇ¸æËß±àÒëÆ÷È¡Ïû½á¹¹ÔÚ±àÒë¹ý³ÌÖÐµÄÓÅ»¯¶ÔÆë
+//__attribute__((packed))ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ß±ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½á¹¹ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½
  
-//40byteÐÅÏ¢Í·
+//40byteï¿½ï¿½Ï¢Í·
 typedef struct
 {
 	uint32_t ciSize;//40
-	uint32_t ciWidth;//¿í¶È
-	uint32_t ciHeight;//¸ß¶È
-	uint16_t ciPlanes;//Ä¿±êÉè±¸µÄÎ»Æ½ÃæÊý£¬ÖµÎª1
-	uint16_t ciBitCount;//Ã¿¸öÏñËØµÄÎ»Êý
-	uint32_t ciCompress;//Ñ¹ËõËµÃ÷
-	uint32_t ciSizeImage;//ÓÃ×Ö½Ú±íÊ¾µÄÍ¼Ïñ´óÐ¡£¬¸ÃÊý¾Ý±ØÐëÊÇ4µÄ±¶Êý
-	uint32_t ciXPelsPerMeter;//Ä¿±êÉè±¸µÄË®Æ½ÏñËØÊý/Ã×
-	uint32_t ciYPelsPerMeter;//Ä¿±êÉè±¸µÄ´¹Ö±ÏñËØÊý/Ã×
-	uint32_t ciClrUsed;//Î»Í¼Ê¹ÓÃµ÷É«°åµÄÑÕÉ«Êý
-	uint32_t ciClrImportant;//Ö¸¶¨ÖØÒªµÄÑÕÉ«Êý£¬µ±¸ÃÓòµÄÖµµÈÓÚÑÕÉ«ÊýÊ±£¨»òÕßµÈÓÚ0Ê±£©£¬±íÊ¾ËùÓÐÑÕÉ«¶¼Ò»ÑùÖØÒª
+	uint32_t ciWidth;//ï¿½ï¿½ï¿½ï¿½
+	uint32_t ciHeight;//ï¿½ß¶ï¿½
+	uint16_t ciPlanes;//Ä¿ï¿½ï¿½ï¿½è±¸ï¿½ï¿½Î»Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎª1
+	uint16_t ciBitCount;//Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½Î»ï¿½ï¿½
+	uint32_t ciCompress;//Ñ¹ï¿½ï¿½Ëµï¿½ï¿½
+	uint32_t ciSizeImage;//ï¿½ï¿½ï¿½Ö½Ú±ï¿½Ê¾ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ï¿½ï¿½4ï¿½Ä±ï¿½ï¿½ï¿½
+	uint32_t ciXPelsPerMeter;//Ä¿ï¿½ï¿½ï¿½è±¸ï¿½ï¿½Ë®Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½
+	uint32_t ciYPelsPerMeter;//Ä¿ï¿½ï¿½ï¿½è±¸ï¿½Ä´ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½
+	uint32_t ciClrUsed;//Î»Í¼Ê¹ï¿½Ãµï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½
+	uint32_t ciClrImportant;//Ö¸ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½0Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Òª
 }__attribute__((packed)) BITMAPINFOHEADER;
 
 typedef struct
@@ -49,7 +49,7 @@ typedef struct
 	uint8_t green;
 	uint8_t red;
 	uint8_t reserved;
-}__attribute__((packed)) PIXEL;//ÑÕÉ«Ä£Ê½RGB
+}__attribute__((packed)) PIXEL;//ï¿½ï¿½É«Ä£Ê½RGB
 
 #define ABS(X)    ((X) > 0 ? (X) : -(X))     
 

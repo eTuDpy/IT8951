@@ -1,7 +1,10 @@
+#include <string.h>
+#include <inttypes.h>
 #include "IT8951.h"
 
 int main (int argc, char *argv[])
 {
+	printf("Bah \n");
 	/*
 	printf("ReadReg = 0x%x\n",IT8951ReadReg(LISAR));
 	IT8951WriteReg(LISAR,0x1234);
@@ -13,17 +16,19 @@ int main (int argc, char *argv[])
 		printf("IT8951_Init error \n");
 		return 1;
 	}
+	printf("Baah \n");
 	
 	// IT8951DisplayExample();
 	// IT8951DisplayExample2();
 	// printf("IT8951_GUI_Example\n");
 	// IT8951_GUI_Example();
 	
-	if (argv[1] == "bmp")
+	if (!strcmp(argv[1], "bmp"))
 	{
+		printf("Bitmap time!\n\r");
 		if (argc != 5)
 		{
-			printf("Error: argc!=4.\n");
+			printf("Error: argc!=5.\n");
 			exit(1);
 		}
 
@@ -31,17 +36,26 @@ int main (int argc, char *argv[])
 		sscanf(argv[2],"%d",&x);
 		sscanf(argv[3],"%d",&y);
 
-		IT8951_BMP_Example(x,y,argv[3]);
-	} else if(argv[1] == "direct")
+		IT8951_BMP_Example(x,y,argv[4]);
+	} else if(!strcmp(argv[1], "direct"))
 	{
+		if (argc != 6)
+		{
+			printf("Error: argc!=5.\n");
+			exit(1);
+		}
+		printf("Direct Write...\n\r");
 		uint32_t x,y;
 		uint16_t usDpyMode;
-		sscanf(argv[2],"%d",&x);
-		sscanf(argv[3],"%d",&y);
-		sscanf(argv[4],"%d",&usDpyMode);
+		sscanf(argv[2], "%d", &x);
+		sscanf(argv[3], "%d", &y);
+		sscanf(argv[4], "%hu", &usDpyMode);
 
 		IT8951_DIRECT(x, y, usDpyMode, argv[5]);
-	} else if(argv[1] == "clear") {
+	} else if(!strcmp(argv[1], "clear")) {
+		printf("Clearing Screen...\n\r");
+		IT8951_CLEAR();
+	} else {
 		IT8951_CLEAR();
 	}
 

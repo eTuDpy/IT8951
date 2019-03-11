@@ -1,0 +1,13 @@
+{
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "files.associations": {
+        "bash_profile": "shellscript",
+        "Movefile": "yaml",
+        "*.twig": "twig",
+        "*.scss": "sass",
+        "*.lock": "json",
+        "inttypes.h": "c",
+        "it8951.h": "c",
+        "bcm2835.h": "c"
+    }
+}
