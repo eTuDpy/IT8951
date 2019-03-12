@@ -1,4 +1,5 @@
 #include "IT8951.h"
+#include "str-repl.c"
 
 //Global varivale
 IT8951DevInfo gstI80DevInfo;
@@ -849,6 +850,73 @@ void IT8951_CLEAR()
  	IT8951HostAreaPackedPixelWrite(&stLdImgInfo, &stAreaImgInfo);//Display function 2
  	//Display Area ?V (x,y,w,h) with mode 0 for initial White to clear Panel
  	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, 0);
+}
+
+void IT8951_SEQUENCE(char *startPath, char *pattern, int startFrame, int endFrame, float rate, uint16_t usDpyMode) {
+	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
+	int frame;
+	
+	// file = strrchr(startPath, '/');
+	frame = startFrame;
+
+	char *file;
+	char *fileName;
+	char *frameNum;
+
+	while (frame <= endFrame) {
+
+		sprintf(frameNum, "%d", frame);
+
+		fileName = repl_str(pattern, "*", frameNum);
+		file = concat(startPath, fileName);
+
+		printf("...\n\r");
+		delay(666);
+		printf("----------Showing frame #%d----------\n\r", frame);
+		IT8951_SHOW_FRAME(file, usDpyMode);
+
+		frame++;
+	}
+	printf("!!! ### ~~~ DONE ~~ ### !!!\n\r");
+}
+
+char* concat(const char *s1, const char *s2)
+{
+    char *result = malloc(strlen(s1) + strlen(s2) + 1); // +1 for the null-terminator
+    // in real code you would check for errors in malloc here
+    strcpy(result, s1);
+    strcat(result, s2);
+    return result;
+}
+
+void IT8951_SHOW_FRAME(char *path, uint16_t usDpyMode)
+{
+	IT8951LdImgInfo stLdImgInfo;
+	IT8951AreaImgInfo stAreaImgInfo;
+	
+	EPD_Clear(0xff);
+	
+	//��ʾͼ��
+	Show_bmp(0,0,path);
+
+	IT8951WaitForDisplayReady();
+	
+	//Setting Load image information
+	stLdImgInfo.ulStartFBAddr    = (uint32_t)gpFrameBuf;
+	stLdImgInfo.usEndianType     = IT8951_LDIMG_L_ENDIAN;
+	stLdImgInfo.usPixelFormat    = IT8951_8BPP; 
+	stLdImgInfo.usRotate         = IT8951_ROTATE_0;
+	stLdImgInfo.ulImgBufBaseAddr = gulImgBufAddr;
+	//Set Load Area
+	stAreaImgInfo.usX      = 0;
+	stAreaImgInfo.usY      = 0;
+	stAreaImgInfo.usWidth  = gstI80DevInfo.usPanelW;
+	stAreaImgInfo.usHeight = gstI80DevInfo.usPanelH;
+	
+	//Load Image from Host to IT8951 Image Buffer
+	IT8951HostAreaPackedPixelWrite(&stLdImgInfo, &stAreaImgInfo);//Display function 2
+	//Display Area ?V (x,y,w,h) with mode 2 for fast gray clear mode - depends on current waveform 
+	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
 }
 
 //-----------------------------------------------------------

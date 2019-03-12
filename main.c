@@ -4,7 +4,6 @@
 
 int main (int argc, char *argv[])
 {
-	printf("Bah \n");
 	/*
 	printf("ReadReg = 0x%x\n",IT8951ReadReg(LISAR));
 	IT8951WriteReg(LISAR,0x1234);
@@ -14,18 +13,14 @@ int main (int argc, char *argv[])
 	if(IT8951_Init())
 	{
 		printf("IT8951_Init error \n");
+
 		return 1;
 	}
-	printf("Baah \n");
-	
-	// IT8951DisplayExample();
-	// IT8951DisplayExample2();
-	// printf("IT8951_GUI_Example\n");
-	// IT8951_GUI_Example();
 	
 	if (!strcmp(argv[1], "bmp"))
 	{
-		printf("Bitmap time!\n\r");
+		printf("Render Bitmap\r\n");
+
 		if (argc != 5)
 		{
 			printf("Error: argc!=5.\n");
@@ -39,12 +34,14 @@ int main (int argc, char *argv[])
 		IT8951_BMP_Example(x,y,argv[4]);
 	} else if(!strcmp(argv[1], "direct"))
 	{
+		printf("Direct Write\r\n");
+
 		if (argc != 6)
 		{
 			printf("Error: argc!=5.\n");
 			exit(1);
 		}
-		printf("Direct Write...\n\r");
+
 		uint32_t x,y;
 		uint16_t usDpyMode;
 		sscanf(argv[2], "%d", &x);
@@ -52,9 +49,27 @@ int main (int argc, char *argv[])
 		sscanf(argv[4], "%hu", &usDpyMode);
 
 		IT8951_DIRECT(x, y, usDpyMode, argv[5]);
-	} else if(!strcmp(argv[1], "clear")) {
-		printf("Clearing Screen...\n\r");
+
+	} else if(!strcmp(argv[1], "sequence"))
+	{
+		printf("Sequence\r\n");
+		// char *startPath, char *pattern, int startFrame, int endFrame, float rate, uint16_t usDpyMode
+		int startFrame, endFrame;
+		float rate;
+		uint16_t usDpyMode;
+		sscanf(argv[4], "%d", &startFrame);
+		sscanf(argv[5], "%d", &endFrame);
+		sscanf(argv[6], "%e", &rate);
+		sscanf(argv[7], "%hu", &usDpyMode);
+
+
+		IT8951_SEQUENCE(argv[2], argv[3], startFrame, endFrame, rate, usDpyMode);
+
+	} else if(!strcmp(argv[1], "clear"))
+	{
+		printf("Clearing Screen...\r\n");
 		IT8951_CLEAR();
+
 	} else {
 		IT8951_CLEAR();
 	}
