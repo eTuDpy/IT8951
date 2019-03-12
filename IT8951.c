@@ -814,7 +814,7 @@ void IT8951_DIRECT(uint32_t x, uint32_t y, uint16_t usDpyMode, char *path)
 	
 	//Load Image from Host to IT8951 Image Buffer
 	IT8951HostAreaPackedPixelWrite(&stLdImgInfo, &stAreaImgInfo);//Display function 2
-	//Display Area ?V (x,y,w,h) with mode 2 for fast gray clear mode - depends on current waveform 
+	// Mode 2 and 3 are probably what you want
 	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
 }
 
@@ -852,27 +852,24 @@ void IT8951_CLEAR()
  	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, 0);
 }
 
-void IT8951_SEQUENCE(char *startPath, char *pattern, int startFrame, int endFrame, float rate, uint16_t usDpyMode) {
+void IT8951_SEQUENCE(char *startPath, char *pattern, int startFrame, int endFrame, uint16_t usDpyMode) {
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
 	int frame;
-	
-	// file = strrchr(startPath, '/');
 	frame = startFrame;
 
 	char *file;
 	char *fileName;
-	char *frameNum;
+
 
 	while (frame <= endFrame) {
-
+		char frameNum[10];
 		sprintf(frameNum, "%d", frame);
 
 		fileName = repl_str(pattern, "*", frameNum);
 		file = concat(startPath, fileName);
 
 		printf("...\n\r");
-		delay(666);
-		printf("----------Showing frame #%d----------\n\r", frame);
+		delay(750);
 		IT8951_SHOW_FRAME(file, usDpyMode);
 
 		frame++;
@@ -915,7 +912,6 @@ void IT8951_SHOW_FRAME(char *path, uint16_t usDpyMode)
 	
 	//Load Image from Host to IT8951 Image Buffer
 	IT8951HostAreaPackedPixelWrite(&stLdImgInfo, &stAreaImgInfo);//Display function 2
-	//Display Area ?V (x,y,w,h) with mode 2 for fast gray clear mode - depends on current waveform 
 	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
 }
 

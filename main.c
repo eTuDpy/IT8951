@@ -55,15 +55,12 @@ int main (int argc, char *argv[])
 		printf("Sequence\r\n");
 		// char *startPath, char *pattern, int startFrame, int endFrame, float rate, uint16_t usDpyMode
 		int startFrame, endFrame;
-		float rate;
 		uint16_t usDpyMode;
 		sscanf(argv[4], "%d", &startFrame);
 		sscanf(argv[5], "%d", &endFrame);
-		sscanf(argv[6], "%e", &rate);
-		sscanf(argv[7], "%hu", &usDpyMode);
+		sscanf(argv[6], "%hu", &usDpyMode);
 
-
-		IT8951_SEQUENCE(argv[2], argv[3], startFrame, endFrame, rate, usDpyMode);
+		IT8951_SEQUENCE(argv[2], argv[3], startFrame, endFrame, usDpyMode);
 
 	} else if(!strcmp(argv[1], "clear"))
 	{
