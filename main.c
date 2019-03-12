@@ -53,7 +53,7 @@ int main (int argc, char *argv[])
 	} else if(!strcmp(argv[1], "sequence"))
 	{
 		printf("Sequence\r\n");
-		// char *startPath, char *pattern, int startFrame, int endFrame, float rate, uint16_t usDpyMode
+
 		int startFrame, endFrame;
 		uint16_t usDpyMode;
 		sscanf(argv[4], "%d", &startFrame);

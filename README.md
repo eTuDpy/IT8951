@@ -30,4 +30,6 @@ cd IT8951
 
 make
 
-sudo ./IT8951 0 0 01.bmp
+sudo ./IT8951 clear
+sudo ./IT8951 direct 0 0 2 ./demo_seq/02.bmp
+sudo ./IT8951 sequence ./demo_seq/ *.bmp 10 18 3
