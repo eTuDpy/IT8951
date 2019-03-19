@@ -28,9 +28,12 @@ sudo ./IT8951 clear
 sudo ./IT8951 direct 0 0 2 ./demo_seq/02.bmp
 
 # Play sequence
-# Render image sequences one after another, about 0.5-0.75fps
-# Parameters: [directory] [filename pattern] [start frame] [end frame] [update mode]
-sudo ./IT8951 sequence ./demo_seq/ *.bmp 10 18 3
+# Render image sequences one after another, about 0.5-0.75fps with 750ms wait
+# Parameters: [directory] [filename pattern] [start frame] [end frame] [update mode] [wait]
+# Example 1 - Play demo sequence
+sudo ./IT8951 sequence ./demo_seq/ *.bmp 10 18 2 750
+# Example 2 - Play a sick short film
+sudo ./IT8951 sequence ~/Pictures/le_ravissement_de_frank_n_stein/bmp/ VTS_03_*.bmp 1000 1897 3 50
 ```
 
 ## Website

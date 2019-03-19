@@ -554,9 +554,9 @@ uint8_t Show_bmp(uint32_t x, uint32_t y,char *path)
 		return(-3);
 	}
 	
-	printf("\n*****************************************\n");
-	printf("BMP_cfSize:%d \n", FileHead.cfSize);
- 	printf("BMP_cfoffBits:%d \n", FileHead.cfoffBits);
+	// printf("\n*****************************************\n");
+	// printf("BMP_cfSize:%d \n", FileHead.cfSize);
+ 	// printf("BMP_cfoffBits:%d \n", FileHead.cfoffBits);
 	
 	ret = fread((char *)&InfoHead, sizeof(BITMAPINFOHEADER),1, fp);
 	if (ret != 1)
@@ -566,28 +566,28 @@ uint8_t Show_bmp(uint32_t x, uint32_t y,char *path)
 		return(-4);
 	}
 	
-	printf("BMP_ciSize:%d \n", InfoHead.ciSize);
- 	printf("BMP_ciWidth:%d \n", InfoHead.ciWidth);
-	printf("BMP_ciHeight:%d \n", InfoHead.ciHeight);
-	printf("BMP_ciPlanes:%x \n", InfoHead.ciPlanes);
-	printf("BMP_ciBitCount:%x \n", InfoHead.ciBitCount);
-	printf("BMP_ciCompress:%x \n", InfoHead.ciCompress);
-	printf("BMP_ciSizeImage:%x \n", InfoHead.ciSizeImage);
-	printf("BMP_ciXPelsPerMeter:%x \n", InfoHead.ciXPelsPerMeter);
-	printf("BMP_ciYPelsPerMeter:%x \n", InfoHead.ciYPelsPerMeter);
-	printf("BMP_ciClrUsed:%x \n", InfoHead.ciClrUsed);
-	printf("BMP_ciClrImportant:%x \n", InfoHead.ciClrImportant);
- 	printf("*****************************************\n\n");
+	// printf("BMP_ciSize:%d \n", InfoHead.ciSize);
+ 	// printf("BMP_ciWidth:%d \n", InfoHead.ciWidth);
+	// printf("BMP_ciHeight:%d \n", InfoHead.ciHeight);
+	// printf("BMP_ciPlanes:%x \n", InfoHead.ciPlanes);
+	// printf("BMP_ciBitCount:%x \n", InfoHead.ciBitCount);
+	// printf("BMP_ciCompress:%x \n", InfoHead.ciCompress);
+	// printf("BMP_ciSizeImage:%x \n", InfoHead.ciSizeImage);
+	// printf("BMP_ciXPelsPerMeter:%x \n", InfoHead.ciXPelsPerMeter);
+	// printf("BMP_ciYPelsPerMeter:%x \n", InfoHead.ciYPelsPerMeter);
+	// printf("BMP_ciClrUsed:%x \n", InfoHead.ciClrUsed);
+	// printf("BMP_ciClrImportant:%x \n", InfoHead.ciClrImportant);
+ 	// printf("*****************************************\n\n");
 	
 	total_length = FileHead.cfSize-FileHead.cfoffBits;
 	bytesPerLine=((InfoHead.ciWidth*InfoHead.ciBitCount+31)>>5)<<2;
 	imageSize=bytesPerLine*InfoHead.ciHeight;
 	skip=(4-((InfoHead.ciWidth*InfoHead.ciBitCount)>>3))&3;
 	
-	printf("total_length:%d,%d\n", InfoHead.ciSizeImage,FileHead.cfSize-FileHead.cfoffBits);
-	printf("bytesPerLine = %d\n", bytesPerLine);
-	printf("imageSize = %d\n", imageSize);
-	printf("skip = %d\n", skip);
+	// printf("total_length:%d,%d\n", InfoHead.ciSizeImage,FileHead.cfSize-FileHead.cfoffBits);
+	// printf("bytesPerLine = %d\n", bytesPerLine);
+	// printf("imageSize = %d\n", imageSize);
+	// printf("skip = %d\n", skip);
 	
     bmp_width = InfoHead.ciWidth;
     bmp_height = InfoHead.ciHeight;

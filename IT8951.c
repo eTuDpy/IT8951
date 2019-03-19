@@ -1,5 +1,6 @@
 #include "IT8951.h"
 #include "str-repl.c"
+#include <time.h>
 
 //Global varivale
 IT8951DevInfo gstI80DevInfo;
@@ -852,7 +853,7 @@ void IT8951_CLEAR()
  	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, 0);
 }
 
-void IT8951_SEQUENCE(char *startPath, char *pattern, int startFrame, int endFrame, uint16_t usDpyMode) {
+void IT8951_SEQUENCE(char *startPath, char *pattern, int startFrame, int endFrame, uint16_t usDpyMode, int wait) {
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
 	int frame;
 	frame = startFrame;
@@ -868,9 +869,12 @@ void IT8951_SEQUENCE(char *startPath, char *pattern, int startFrame, int endFram
 		fileName = repl_str(pattern, "*", frameNum);
 		file = concat(startPath, fileName);
 
-		printf("...\n\r");
-		delay(750);
+		printf("waiting...\n\r");
+		delay(wait);
+
+		printf("Loading frame %d \n\r", frame);
 		IT8951_SHOW_FRAME(file, usDpyMode);
+		printf("Rendered at %u\n", (unsigned)time(NULL));
 
 		frame++;
 	}
@@ -911,7 +915,7 @@ void IT8951_SHOW_FRAME(char *path, uint16_t usDpyMode)
 	stAreaImgInfo.usHeight = gstI80DevInfo.usPanelH;
 	
 	//Load Image from Host to IT8951 Image Buffer
-	IT8951HostAreaPackedPixelWrite(&stLdImgInfo, &stAreaImgInfo);//Display function 2
+	IT8951HostAreaPackedPixelWrite(&stLdImgInfo, &stAreaImgInfo);
 	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
 }
 

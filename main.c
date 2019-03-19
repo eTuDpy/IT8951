@@ -54,13 +54,14 @@ int main (int argc, char *argv[])
 	{
 		printf("Sequence\r\n");
 
-		int startFrame, endFrame;
+		int startFrame, endFrame, wait;
 		uint16_t usDpyMode;
 		sscanf(argv[4], "%d", &startFrame);
 		sscanf(argv[5], "%d", &endFrame);
 		sscanf(argv[6], "%hu", &usDpyMode);
+		sscanf(argv[7], "%d", &wait);
 
-		IT8951_SEQUENCE(argv[2], argv[3], startFrame, endFrame, usDpyMode);
+		IT8951_SEQUENCE(argv[2], argv[3], startFrame, endFrame, usDpyMode, wait);
 
 	} else if(!strcmp(argv[1], "clear"))
 	{

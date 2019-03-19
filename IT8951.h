@@ -138,7 +138,7 @@ void IT8951_DIRECT(uint32_t x, uint32_t y, uint16_t usDpyMode, char *path);
 void IT8951_CLEAR(void);
 
 char* concat(const char*, const char*);
-void IT8951_SEQUENCE(char *startPath, char *pattern, int startFrame, int endFrame, uint16_t usDpyMode);
+void IT8951_SEQUENCE(char *startPath, char *pattern, int startFrame, int endFrame, uint16_t usDpyMode, int wait);
 void IT8951_SHOW_FRAME(char *path, uint16_t usDpyMode);
 
 uint16_t IT8951ReadReg(uint16_t usRegAddr);
