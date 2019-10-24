@@ -833,8 +833,9 @@ void IT8951_BOOT(uint32_t x, uint32_t y, uint16_t usDpyMode, int upper, char *pa
 	//create random number using returnRandom
 	int lower = 1, count = 1;
 	int i; 
+	int num;
     for (i = 0; i < count; i++) { 
-        int num = (rand() % 
+        num = (rand() % 
            (upper - lower + 1)) + lower; 
     }
 	char str_int[12];
