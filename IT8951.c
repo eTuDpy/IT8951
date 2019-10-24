@@ -850,7 +850,7 @@ void IT8951_BOOT(uint32_t x, uint32_t y, uint16_t usDpyMode, int upper, char *pa
 	//rename path + convert 
 	//printf("%d ", num); 
 	//printf("%s ", str_int); 
-    //printf("%s ", path); 
+    printf("%s ", path); 
 	
 	//rename path + convert 
 	
