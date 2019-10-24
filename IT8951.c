@@ -834,6 +834,7 @@ void IT8951_BOOT(uint32_t x, uint32_t y, uint16_t usDpyMode, int upper, char *pa
 	int lower = 1, count = 1;
 	int i; 
 	int num;
+	srand ( time(NULL) );
     for (i = 0; i < count; i++) { 
         num = (rand() % 
            (upper - lower + 1)) + lower; 
