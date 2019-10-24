@@ -819,6 +819,63 @@ void IT8951_DIRECT(uint32_t x, uint32_t y, uint16_t usDpyMode, char *path)
 	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
 }
 
+
+
+void IT8951_BOOT(uint32_t x, uint32_t y, uint16_t usDpyMode, int upper, char *path)
+{
+	IT8951LdImgInfo stLdImgInfo;
+	IT8951AreaImgInfo stAreaImgInfo;
+	
+	EPD_Clear(0xff);
+	
+	//create random number using returnRandom
+	int lower = 1, count = 1;
+	int someInt = returnRandom(lower,upper,count);
+	char str_int[12];
+	sprintf(str_int, "%d", someInt);
+	//char str_bmp[] = ".bmp";
+	sprintf(path,"/");
+	sprintf(path,str_int);
+	sprintf(path,".bmp");
+
+	//rename path + convert 
+	
+	//��ʾͼ��
+	Show_bmp(x,y,path);
+
+	IT8951WaitForDisplayReady();
+	
+	//Setting Load image information
+	stLdImgInfo.ulStartFBAddr    = (uint32_t)gpFrameBuf;
+	stLdImgInfo.usEndianType     = IT8951_LDIMG_L_ENDIAN;
+	stLdImgInfo.usPixelFormat    = IT8951_8BPP; 
+	stLdImgInfo.usRotate         = IT8951_ROTATE_0;
+	stLdImgInfo.ulImgBufBaseAddr = gulImgBufAddr;
+	//Set Load Area
+	stAreaImgInfo.usX      = 0;
+	stAreaImgInfo.usY      = 0;
+	stAreaImgInfo.usWidth  = gstI80DevInfo.usPanelW;
+	stAreaImgInfo.usHeight = gstI80DevInfo.usPanelH;
+	
+	//Load Image from Host to IT8951 Image Buffer
+	IT8951HostAreaPackedPixelWrite(&stLdImgInfo, &stAreaImgInfo);//Display function 2
+	// Mode 2 and 3 are probably what you want
+	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
+}
+
+
+void returnRandom(int lower, int upper,int count) 
+{ 
+    int i; 
+    for (i = 0; i < count; i++) { 
+        int num = (rand() % 
+           (upper - lower + 1)) + lower; 
+        return(num);
+    } 
+} 
+
+
+
 void IT8951_CLEAR()
 {
 	IT8951LdImgInfo stLdImgInfo;
