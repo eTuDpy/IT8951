@@ -400,7 +400,7 @@ void GetIT8951SystemInfo(void* pBuf)
 	
 	//Show Device information of IT8951
 	pstDevInfo = (IT8951DevInfo*)pBuf;
-	printf("Panel(W,T) = (%d,%d)\r\n",
+	printf("Panel(W,H) = (%d,%d)\r\n",
 	pstDevInfo->usPanelW, pstDevInfo->usPanelH );
 	printf("Image Buffer Address = %X\r\n",
 	pstDevInfo->usImgBufAddrL | (pstDevInfo->usImgBufAddrH << 16));
@@ -570,7 +570,7 @@ uint8_t IT8951_Init()
 	if (VCOM != IT8951GetVCOM())
 	{
 		IT8951SetVCOM(VCOM);
-		printf("VCO2M = -%.02fV\n",(float)IT8951GetVCOM()/1000);
+		printf("VCOM = -%.02fV\n",(float)IT8951GetVCOM()/1000);
 	}
 	
 	return 0;
@@ -796,7 +796,6 @@ void IT8951_DIRECT(uint32_t x, uint32_t y, uint16_t usDpyMode, char *path)
 {
 	IT8951LdImgInfo stLdImgInfo;
 	IT8951AreaImgInfo stAreaImgInfo;
-	printf("Eugen_Test")
 	EPD_Clear(0xff);
 	
 	//��ʾͼ��

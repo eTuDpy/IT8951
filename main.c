@@ -59,7 +59,7 @@ int main (int argc, char *argv[])
 			printf("Error: argc!=6.\n");
 			exit(1);
 		}
-
+		int upper;
 		uint32_t x,y;
 		uint16_t usDpyMode;
 		sscanf(argv[2], "%d", &x);
