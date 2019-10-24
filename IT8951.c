@@ -1,6 +1,9 @@
 #include "IT8951.h"
 #include "str-repl.c"
 #include <time.h>
+#include <stdio.h>
+#include <stdlib.h> 
+#include <string.h>
 
 //Global varivale
 IT8951DevInfo gstI80DevInfo;
@@ -830,14 +833,25 @@ void IT8951_BOOT(uint32_t x, uint32_t y, uint16_t usDpyMode, int upper, char *pa
 	
 	//create random number using returnRandom
 	int lower = 1, count = 1;
-	int someInt = returnRandom(lower,upper,count);
+	int i; 
+    for (i = 0; i < count; i++) { 
+        int num = (rand() % 
+           (upper - lower + 1)) + lower; 
+    
 	char str_int[12];
-	sprintf(str_int, "%d", someInt);
+	sprintf(str_int, "%d", num);
 	//char str_bmp[] = ".bmp";
-	sprintf(path,"/");
-	sprintf(path,str_int);
-	sprintf(path,".bmp");
-
+	strcat(path, "/");
+	strcat(path, str_int);
+	strcat(path, ".bmp");
+	//sprintf(path,"%s", "/");
+	//sprintf(path,"%s" ,str_int);
+	//sprintf(path,"%s", ".bmp");
+	//rename path + convert 
+	//printf("%d ", num); 
+	//printf("%s ", str_int); 
+    //printf("%s ", path); 
+	
 	//rename path + convert 
 	
 	//��ʾͼ��
