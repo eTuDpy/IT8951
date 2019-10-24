@@ -796,7 +796,7 @@ void IT8951_DIRECT(uint32_t x, uint32_t y, uint16_t usDpyMode, char *path)
 {
 	IT8951LdImgInfo stLdImgInfo;
 	IT8951AreaImgInfo stAreaImgInfo;
-	
+	printf("Eugen_Test")
 	EPD_Clear(0xff);
 	
 	//��ʾͼ��
