@@ -135,6 +135,7 @@ void IT8951DisplayExample3(void);
 void IT8951_GUI_Example(void);
 void IT8951_BMP_Example(uint32_t x, uint32_t y,char *path);
 void IT8951_DIRECT(uint32_t x, uint32_t y, uint16_t usDpyMode, char *path);
+void IT8951_BOOT(uint32_t x, uint32_t y, uint16_t usDpyMode, int upper, char *path);
 void IT8951_CLEAR(void);
 
 char* concat(const char*, const char*);
