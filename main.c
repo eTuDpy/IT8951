@@ -52,7 +52,7 @@ int main (int argc, char *argv[])
 	}else if(!strcmp(argv[1], "boot"))
 	{
 		printf("Direct Write\r\n");
-		printf("Eugen\r\n");
+		printf("Eugen\n");
 
 		if (argc != 7)
 		{
