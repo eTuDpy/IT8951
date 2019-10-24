@@ -49,15 +49,14 @@ int main (int argc, char *argv[])
 		sscanf(argv[4], "%hu", &usDpyMode);
 
 		IT8951_DIRECT(x, y, usDpyMode, argv[5]);
-	}
-	else if(!strcmp(argv[1], "boot"))
+	}else if(!strcmp(argv[1], "boot"))
 	{
 		printf("Direct Write\r\n");
-		printf("Eugen");
+		printf("Eugen\r\n");
 
 		if (argc != 7)
 		{
-			printf("Error: argc!=5.\n");
+			printf("Error: argc!=6.\n");
 			exit(1);
 		}
 
@@ -70,8 +69,7 @@ int main (int argc, char *argv[])
 
 		IT8951_BOOT(x, y, usDpyMode, upper, argv[6]);
 
-	}
-	else if(!strcmp(argv[1], "sequence"))
+	}else if(!strcmp(argv[1], "sequence"))
 	{
 		printf("Sequence\r\n");
 
