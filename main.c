@@ -53,8 +53,9 @@ int main (int argc, char *argv[])
 	else if(!strcmp(argv[1], "boot"))
 	{
 		printf("Direct Write\r\n");
+		printf("Eugen");
 
-		if (argc != 6)
+		if (argc != 7)
 		{
 			printf("Error: argc!=5.\n");
 			exit(1);
