@@ -570,7 +570,7 @@ uint8_t IT8951_Init()
 	if (VCOM != IT8951GetVCOM())
 	{
 		IT8951SetVCOM(VCOM);
-		printf("VCOM = -%.02fV\n",(float)IT8951GetVCOM()/1000);
+		printf("VCO2M = -%.02fV\n",(float)IT8951GetVCOM()/1000);
 	}
 	
 	return 0;
