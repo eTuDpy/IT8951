@@ -400,7 +400,7 @@ void GetIT8951SystemInfo(void* pBuf)
 	
 	//Show Device information of IT8951
 	pstDevInfo = (IT8951DevInfo*)pBuf;
-	printf("Panel(W,H) = (%d,%d)\r\n",
+	printf("Panel(W,T) = (%d,%d)\r\n",
 	pstDevInfo->usPanelW, pstDevInfo->usPanelH );
 	printf("Image Buffer Address = %X\r\n",
 	pstDevInfo->usImgBufAddrL | (pstDevInfo->usImgBufAddrH << 16));
