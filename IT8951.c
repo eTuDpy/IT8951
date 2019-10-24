@@ -850,7 +850,7 @@ void IT8951_BOOT(uint32_t x, uint32_t y, uint16_t usDpyMode, int upper, char *pa
 	//rename path + convert 
 	//printf("%d ", num); 
 	//printf("%s ", str_int); 
-    printf("%s ", path); 
+    printf(path); 
 	
 	//rename path + convert 
 	
@@ -877,16 +877,6 @@ void IT8951_BOOT(uint32_t x, uint32_t y, uint16_t usDpyMode, int upper, char *pa
 	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
 }
 
-
-void returnRandom(int lower, int upper,int count) 
-{ 
-    int i; 
-    for (i = 0; i < count; i++) { 
-        int num = (rand() % 
-           (upper - lower + 1)) + lower; 
-        return(num);
-    } 
-} 
 
 
 
