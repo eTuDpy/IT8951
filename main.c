@@ -67,6 +67,7 @@ int main (int argc, char *argv[])
 		sscanf(argv[4], "%hu", &usDpyMode);
 
 		IT8951_SEQUENCE_ZENIA(x, y, usDpyMode);
+		
 	}else if(!strcmp(argv[1], "boot"))
 	{
 		printf("Direct Write\r\n");
