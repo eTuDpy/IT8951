@@ -920,23 +920,19 @@ void IT8951_CLEAR()
 void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode, char *path)
 {
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
-	printf("Test\n\r");
-	const int wait = 30000; 
+	const int wait = 60000; 
 	const int lower = 1;
 	const int upper = 65;
 	char path2[50];
 	char str_int[12];
 	int num;
 	int ii = 0;
-	printf("Test_1\n\r");
 	strcpy(path2, path);
 	
 	while (ii < 10) {
 		//create random number using returnRandom
-		printf("Test_2\n\r");
 		srand ( time(NULL) );
 		num = (rand() % (upper - lower + 1)) + lower; 
-		printf("Test_3\n\r");
 		sprintf(str_int, "%d", num);
 		//printf("%s\n", str_int);
 		//char str_bmp[] = ".bmp";
@@ -950,7 +946,6 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode, char *pat
 		//printf("%d ", num); 
 		//printf("%s ", str_int); 
 		//rename path + convert 
-		printf("Test_4\n\r");
 		IT8951_SHOW_FRAME(path, usDpyMode);
 		
 		//��ʾͼ��
