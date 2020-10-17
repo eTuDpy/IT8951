@@ -938,6 +938,7 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 		num = (rand() % (upper - lower + 1)) + lower; 
 	
 		sprintf(str_int, "%d", num);
+		printf("%d\n", str_int);
 		//char str_bmp[] = ".bmp";
 		strcat(path, str_int);
 		strcat(path, ".bmp");
