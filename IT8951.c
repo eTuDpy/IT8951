@@ -924,7 +924,7 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode) {
 	int i; 
 	int num;
 	int ii;
-	ii = 0 
+	ii = 0; 
 		
 	while (ii < 10) {
 		//create random number using returnRandom
