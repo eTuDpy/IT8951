@@ -48,7 +48,7 @@ int main (int argc, char *argv[])
 		sscanf(argv[3], "%d", &y);
 		sscanf(argv[4], "%hu", &usDpyMode);
 
-		IT8951_DIRECT(x, y, usDpyMode);
+		IT8951_DIRECT(x, y, usDpyMode, argv[5]);
 		
 	} else if(!strcmp(argv[1], "mele"))
 	{
