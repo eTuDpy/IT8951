@@ -926,13 +926,13 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 	char str_int[12];
 	int num;
 	int ii = 0;
-		
+	printf("Test_1\n\r");
 	while (ii < 10) {
 		//create random number using returnRandom
-		
+		printf("Test_2\n\r");
 		srand ( time(NULL) );
 		num = (rand() % (upper - lower + 1)) + lower; 
-	
+		printf("Test_3\n\r");
 		sprintf(str_int, "%d", num);
 		//printf("%s\n", str_int);
 		//char str_bmp[] = ".bmp";
@@ -945,7 +945,7 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 		//printf("%d ", num); 
 		//printf("%s ", str_int); 
 		//rename path + convert 
-		printf("Test\n\r");
+		printf("Test_4\n\r");
 		IT8951_SHOW_FRAME(path, usDpyMode);
 		
 		//��ʾͼ��
