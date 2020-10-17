@@ -924,12 +924,12 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode, char *pat
 	const int wait = 30000; 
 	const int lower = 1;
 	const int upper = 65;
-	char path2[50] = path;
+	char path2[50];
 	char str_int[12];
 	int num;
 	int ii = 0;
 	printf("Test_1\n\r");
-	
+	strcpy(path2, path);
 	
 	while (ii < 10) {
 		//create random number using returnRandom
@@ -976,7 +976,7 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode, char *pat
 		//IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
 		ii++;
 		delay(wait);
-		path = path2;
+		strcpy(path, path2);
 	}
 }
 
