@@ -919,7 +919,7 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 {
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
 	
-	char path[60] = "./pictures/";
+	char path[60] = "~/pictures/";
 	const int wait = 30000; 
 	const int lower = 1;
 	const int upper = 65;
@@ -945,7 +945,7 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 		//printf("%d ", num); 
 		//printf("%s ", str_int); 
 		//rename path + convert 
-		
+		printf("Test\n\r");
 		IT8951_SHOW_FRAME(path, usDpyMode);
 		
 		//��ʾͼ��
