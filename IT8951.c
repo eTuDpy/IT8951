@@ -918,8 +918,12 @@ void IT8951_CLEAR()
 void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 {
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
+	IT8951LdImgInfo stLdImgInfo;
+	IT8951AreaImgInfo stAreaImgInfo;
 	
-	const char path = "~/pictures/";
+	EPD_Clear(0xff);
+	
+	char path[] = '~/pictures/';
 	const int wait = 30000; 
 	const int lower = 1;
 	const int count = 1;
@@ -937,16 +941,14 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 		char str_int[12];
 		sprintf(str_int, "%d", num);
 		//char str_bmp[] = ".bmp";
-		strcat(path, str_int);
-		strcat(path, ".bmp");
+		strcat(&path, str_int);
+		strcat(&path, ".bmp");
 		//sprintf(path,"%s", "/");
 		//sprintf(path,"%s" ,str_int);
 		//sprintf(path,"%s", ".bmp");
 		//rename path + convert 
 		//printf("%d ", num); 
 		//printf("%s ", str_int); 
-	    	printf(path); 
-
 		//rename path + convert 
 
 		//��ʾͼ��
