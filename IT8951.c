@@ -917,11 +917,10 @@ void IT8951_CLEAR()
  	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, 0);
 }
 
-void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
+void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode, char *path)
 {
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
 	printf("Test\n\r");
-	char path[50] = "~/pictures/";
 	const int wait = 30000; 
 	const int lower = 1;
 	const int upper = 65;
@@ -938,6 +937,7 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 		sprintf(str_int, "%d", num);
 		//printf("%s\n", str_int);
 		//char str_bmp[] = ".bmp";
+		strcat(path, "/");
 		strcat(path, str_int);
 		strcat(path, ".bmp");
 		//sprintf(path,"%s", "/");
@@ -973,6 +973,7 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 		//IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
 		ii++;
 		delay(wait);
+		path = "~/pictures"
 	}
 }
 
