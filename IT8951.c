@@ -915,16 +915,18 @@ void IT8951_CLEAR()
  	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, 0);
 }
 
-void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode) {
+void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
+{
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
 	
-	char path = "~/pictures/";
-	int wait = 30000; 
-	int lower = 1, count = 1, upper = 65;
+	const char path = "~/pictures/";
+	const int wait = 30000; 
+	const int lower = 1;
+	const int count = 1;
+	const int upper = 65;
 	int i; 
 	int num;
-	int ii;
-	ii = 0; 
+	int ii = 0;
 		
 	while (ii < 10) {
 		//create random number using returnRandom
@@ -933,7 +935,7 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode) {
 		for (i = 0; i < count; i++) { 
 			num = (rand() % 
 			(upper - lower + 1)) + lower; 
-		}
+			}
 		
 		char str_int[12];
 		sprintf(str_int, "%d", num);
@@ -974,10 +976,8 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode) {
 		IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
 		ii++;
 		delay(wait);
+	}
 }
-
-
-
 
 void IT8951_SEQUENCE(char *startPath, char *pattern, int startFrame, int endFrame, uint16_t usDpyMode, int wait) {
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
