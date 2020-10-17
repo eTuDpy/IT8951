@@ -915,11 +915,11 @@ void IT8951_CLEAR()
  	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, 0);
 }
 
-void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode, int upper, int wait) {
+void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode) {
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
 	
 	char path = ~/pictures/;
-	int wait = 300000; 
+	int wait = 30000; 
 	int lower = 1, count = 1, upper = 65;
 	int i; 
 	int num;
