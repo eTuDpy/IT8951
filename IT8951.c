@@ -948,28 +948,30 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 		//printf("%d ", num); 
 		//printf("%s ", str_int); 
 		//rename path + convert 
-
+		
+		IT8951_SHOW_FRAME(path, usDpyMode);
+		
 		//��ʾͼ��
-		Show_bmp(x,y,path);
+		//Show_bmp(x,y,path);
 
-		IT8951WaitForDisplayReady();
+		//IT8951WaitForDisplayReady();
 
 		//Setting Load image information
-		stLdImgInfo.ulStartFBAddr    = (uint32_t)gpFrameBuf;
-		stLdImgInfo.usEndianType     = IT8951_LDIMG_L_ENDIAN;
-		stLdImgInfo.usPixelFormat    = IT8951_8BPP; 
-		stLdImgInfo.usRotate         = IT8951_ROTATE_0;
-		stLdImgInfo.ulImgBufBaseAddr = gulImgBufAddr;
+		//stLdImgInfo.ulStartFBAddr    = (uint32_t)gpFrameBuf;
+		//stLdImgInfo.usEndianType     = IT8951_LDIMG_L_ENDIAN;
+		//stLdImgInfo.usPixelFormat    = IT8951_8BPP; 
+		//stLdImgInfo.usRotate         = IT8951_ROTATE_0;
+		//stLdImgInfo.ulImgBufBaseAddr = gulImgBufAddr;
 		//Set Load Area
-		stAreaImgInfo.usX      = 0;
-		stAreaImgInfo.usY      = 0;
-		stAreaImgInfo.usWidth  = gstI80DevInfo.usPanelW;
-		stAreaImgInfo.usHeight = gstI80DevInfo.usPanelH;
+		//stAreaImgInfo.usX      = 0;
+		//stAreaImgInfo.usY      = 0;
+		//stAreaImgInfo.usWidth  = gstI80DevInfo.usPanelW;
+		//stAreaImgInfo.usHeight = gstI80DevInfo.usPanelH;
 
 		//Load Image from Host to IT8951 Image Buffer
-		IT8951HostAreaPackedPixelWrite(&stLdImgInfo, &stAreaImgInfo);//Display function 2
+		//IT8951HostAreaPackedPixelWrite(&stLdImgInfo, &stAreaImgInfo);//Display function 2
 		// Mode 2 and 3 are probably what you want
-		IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
+		//IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
 		ii++;
 		delay(wait);
 	}
