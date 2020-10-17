@@ -923,17 +923,15 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 	
 	EPD_Clear(0xff);
 	
-	char path[] = '~/pictures/';
+	char path[40] = "~/pictures/";
 	const int wait = 30000; 
 	const int lower = 1;
-	const int count = 1;
 	const int upper = 65;
-	char str_int[12];
-	int i; 
+	char str_int[];
+	int i = 0; 
 	int num;
-	int ii = 0;
 		
-	while (ii < 10) {
+	while (i < 10) {
 		//create random number using returnRandom
 		
 		srand ( time(NULL) );
@@ -972,7 +970,7 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 		IT8951HostAreaPackedPixelWrite(&stLdImgInfo, &stAreaImgInfo);//Display function 2
 		// Mode 2 and 3 are probably what you want
 		IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
-		ii++;
+		i++;
 		delay(wait);
 	}
 }
