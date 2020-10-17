@@ -53,13 +53,7 @@ int main (int argc, char *argv[])
 	} else if(!strcmp(argv[1], "mele"))
 	{
 		printf("Mele\r\n");
-
-		if (argc != 6)
-		{
-			printf("Error: argc!=5.\n");
-			exit(1);
-		}
-
+		
 		uint32_t x,y;
 		uint16_t usDpyMode;
 		sscanf(argv[2], "%d", &x);
