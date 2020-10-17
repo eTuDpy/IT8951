@@ -932,15 +932,11 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 		//create random number using returnRandom
 		
 		srand ( time(NULL) );
-		for (i = 0; i < count; i++) { 
-			num = (rand() % 
-			(upper - lower + 1)) + lower; 
-			}
+		num = (rand() % (upper - lower + 1)) + lower; 
 		
 		char str_int[12];
 		sprintf(str_int, "%d", num);
 		//char str_bmp[] = ".bmp";
-		strcat(path, "/");
 		strcat(path, str_int);
 		strcat(path, ".bmp");
 		//sprintf(path,"%s", "/");
