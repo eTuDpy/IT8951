@@ -835,10 +835,10 @@ void IT8951_BOOT(uint32_t x, uint32_t y, uint16_t usDpyMode, int upper, char *pa
 	int i; 
 	int num;
 	srand ( time(NULL) );
-    for (i = 0; i < count; i++) { 
-        num = (rand() % 
-           (upper - lower + 1)) + lower; 
-    }
+    	for (i = 0; i < count; i++) { 
+        	num = (rand() % 
+           	(upper - lower + 1)) + lower; 
+    	}
 	char str_int[12];
 	sprintf(str_int, "%d", num);
 	//char str_bmp[] = ".bmp";
@@ -914,6 +914,68 @@ void IT8951_CLEAR()
  	//Display Area ?V (x,y,w,h) with mode 0 for initial White to clear Panel
  	IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, 0);
 }
+
+void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode, int upper, int wait) {
+	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
+	
+	char path = ~/pictures/;
+	int wait = 300000; 
+	int lower = 1, count = 1, upper = 65;
+	int i; 
+	int num;
+	
+	
+	whilte (True) {
+		//create random number using returnRandom
+		
+		srand ( time(NULL) );
+		for (i = 0; i < count; i++) { 
+			num = (rand() % 
+			(upper - lower + 1)) + lower; 
+		}
+		
+		char str_int[12];
+		sprintf(str_int, "%d", num);
+		//char str_bmp[] = ".bmp";
+		strcat(path, "/");
+		strcat(path, str_int);
+		strcat(path, ".bmp");
+		//sprintf(path,"%s", "/");
+		//sprintf(path,"%s" ,str_int);
+		//sprintf(path,"%s", ".bmp");
+		//rename path + convert 
+		//printf("%d ", num); 
+		//printf("%s ", str_int); 
+	    	printf(path); 
+
+		//rename path + convert 
+
+		//��ʾͼ��
+		Show_bmp(x,y,path);
+
+		IT8951WaitForDisplayReady();
+
+		//Setting Load image information
+		stLdImgInfo.ulStartFBAddr    = (uint32_t)gpFrameBuf;
+		stLdImgInfo.usEndianType     = IT8951_LDIMG_L_ENDIAN;
+		stLdImgInfo.usPixelFormat    = IT8951_8BPP; 
+		stLdImgInfo.usRotate         = IT8951_ROTATE_0;
+		stLdImgInfo.ulImgBufBaseAddr = gulImgBufAddr;
+		//Set Load Area
+		stAreaImgInfo.usX      = 0;
+		stAreaImgInfo.usY      = 0;
+		stAreaImgInfo.usWidth  = gstI80DevInfo.usPanelW;
+		stAreaImgInfo.usHeight = gstI80DevInfo.usPanelH;
+
+		//Load Image from Host to IT8951 Image Buffer
+		IT8951HostAreaPackedPixelWrite(&stLdImgInfo, &stAreaImgInfo);//Display function 2
+		// Mode 2 and 3 are probably what you want
+		IT8951DisplayArea(0,0, gstI80DevInfo.usPanelW, gstI80DevInfo.usPanelH, usDpyMode);
+		delay(wait);
+}
+
+
+
 
 void IT8951_SEQUENCE(char *startPath, char *pattern, int startFrame, int endFrame, uint16_t usDpyMode, int wait) {
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
