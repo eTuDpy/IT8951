@@ -794,6 +794,8 @@ void IT8951_BMP_Example(uint32_t x, uint32_t y,char *path)
 
 void IT8951_DIRECT(uint32_t x, uint32_t y, uint16_t usDpyMode, char *path)
 {
+	printf("Look_at_me\n\r");
+	printf("Look at me\n\r");
 	IT8951LdImgInfo stLdImgInfo;
 	IT8951AreaImgInfo stAreaImgInfo;
 	EPD_Clear(0xff);
