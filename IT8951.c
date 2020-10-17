@@ -918,8 +918,8 @@ void IT8951_CLEAR()
 void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode)
 {
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
-	
-	char path[60] = "~/pictures/";
+	printf("Test\n\r");
+	char path[50] = "~/pictures/";
 	const int wait = 30000; 
 	const int lower = 1;
 	const int upper = 65;
