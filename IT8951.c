@@ -920,7 +920,7 @@ void IT8951_CLEAR()
 void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode, char *path)
 {
 	// e.g., ~/Pictures/example_sequence/ FRAME_*.bmp 1000 1897 1.5 3
-	const int wait = 60000; 
+	const int wait = 30000; 
 	const int lower = 1;
 	const int upper = 65;
 	char path2[50];
@@ -929,7 +929,7 @@ void IT8951_SEQUENCE_ZENIA(uint32_t x, uint32_t y, uint16_t usDpyMode, char *pat
 	int ii = 0;
 	strcpy(path2, path);
 	
-	while (ii < 10) {
+	while (ii < 4) {
 		//create random number using returnRandom
 		srand ( time(NULL) );
 		num = (rand() % (upper - lower + 1)) + lower; 
